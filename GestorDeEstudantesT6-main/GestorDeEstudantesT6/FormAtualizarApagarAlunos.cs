@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -139,6 +140,17 @@ namespace GestorDeEstudantesT6
             {
                 return true;
             }
+        }
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+            // Busca estudante pela ID.
+            // Já salva a ID convertida para INTEIRO
+            int id = Convert.ToInt32(textBoxId.Text);
+            MeuBancoDeDados meuBancoDeDados = new MeuBancoDeDados();
+
+            MySqlCommand Comando = new MySqlCommand("SELECT `id`, `nome`, `sobrenome`, `nascimento`, `genero`, `telefone`, `endereço`, `foto`, FROM `estudantes`",
+                meuBancoDeDados.getConexao);
         }
     }
 
